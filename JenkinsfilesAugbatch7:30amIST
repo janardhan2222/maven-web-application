@@ -3,6 +3,8 @@ node
   
   def mavenHOME = tool name: "maven 3.8.6"
   
+  properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), pipelineTriggers([pollSCM('* * * * *')])])
+  
   stage('CkeakOut Code') {
   git branch: 'development', credentialsId: '9e582148-88f0-47fb-8399-3b55346ca75b', url: 
  'https://github.com/janardhan2222/maven-web-application.git'
