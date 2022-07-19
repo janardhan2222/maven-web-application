@@ -1,0 +1,44 @@
+node
+{
+  
+  def mavenHOME = tool name: "maven 3.8.6"
+  
+  stage('CkeakOut Code') {
+  git branch: 'development', credentialsId: '9e582148-88f0-47fb-8399-3b55346ca75b', url: 
+ 'https://github.com/janardhan2222/maven-web-application.git'
+  }
+ 
+ stage('Build') {
+ sh "${mavenHOME}/bin/mvn clean package"
+  }
+/*
+ stage ('ExcuteSonarQubeReport') {
+ sh "${mavenHOME}/bin/mvn clean sonar:sonar"
+  }
+
+ stage ('UploadAritifactoryIntoNexusRepo') {
+ sh "${mavenHOME}/bin/mvn clean deploy"
+  }
+  
+stage('DeploytheAppintoTomcat')
+{
+ sshagent(['15ffbfd6-5a85-4ec0-b1fb-127a4a93400f']) {
+    
+sh"scp -o StrictHostkeyChecking=no target/maven-web-application.war ec2-user@13.233.160.121:/opt/apache-tomcat-9.0.63/webapps"   
+
+} 
+}
+*/
+stage('SendEmailNotification') {
+mail bcc: 'jana9603445440@gmail.com', body: '''Build Over!!
+
+
+Regards
+janardhan
+8095917272.
+''', cc: 'jana9603445440@gmail.com', from: '', replyTo: '', subject: 'Build Over!!', to: 'jana9603445440@gmail.com'
+
+} 
+  
+}
+  
