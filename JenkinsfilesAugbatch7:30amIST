@@ -1,4 +1,4 @@
-node
+node ('wamart-node')
 {
   
   def mavenHOME = tool name: "maven 3.8.6"
