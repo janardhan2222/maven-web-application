@@ -7,7 +7,8 @@ node
    git branch: 'development', credentialsId: '996a4bc2-b2e0-4426-896f-eabe9448ee25', url: 
    'https://github.com/janardhan2222/maven-web-application.git'
    }
-   
+  
+  /*
    stage('Build'){
    sh "${mavenHome}/bin/mvn clean package"
    }
@@ -29,6 +30,7 @@ node
   }
   }
 
+ /*
 stage('SendEmailNotification'){
    mail bcc: 'jaanyjan144@gmail.com', body: '''Build Over
    
