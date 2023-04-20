@@ -2,6 +2,7 @@ node
  {
    
    def mavenHome = tool name: "maven 3.6.2"
+   properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), pipelineTriggers([pollSCM('* * * * *')])])
    
    stage('ChechOutcode'){
    git branch: 'development', credentialsId: '996a4bc2-b2e0-4426-896f-eabe9448ee25', url: 
